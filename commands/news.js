@@ -1,4 +1,4 @@
-const config = require('../config')
+const { tlang, ringtone, cmd,fetchJson, sleep, botpic,ffmpeg, getBuffer, pinterest, prefix, Config } = require('../lib')
 const { cmd, commands } = require('../lib/command')
 const { fetchJson } = require('../lib/functions')
 const hiru = require("../lib/news")
@@ -30,7 +30,7 @@ const platform = `${wabeta.result.platform}`
 const url = `${wabeta.result.url}`
 const news = `${wabeta.result.fulldesc}`
 
-await QueenNilu.sendMessage(from,  { image: { url: "https://telegra.ph/file/e848545de0e98c132a269.jpg" }, caption: `*ᴛɪᴛʟᴇ :* ${title}\n\n*ᴅᴀᴛᴇ :* ${date}\n\n*ᴘʟᴀᴛꜰᴏʀᴍ :* ${platform}\n\n*ᴜʀʟ :* ${url}\n\n*ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ :* ${news}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
+await Void.sendMessage(from,  { image: { url: "https://telegra.ph/file/e848545de0e98c132a269.jpg" }, caption: `*ᴛɪᴛʟᴇ :* ${title}\n\n*ᴅᴀᴛᴇ :* ${date}\n\n*ᴘʟᴀᴛꜰᴏʀᴍ :* ${platform}\n\n*ᴜʀʟ :* ${url}\n\n*ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ :* ${news}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
 }
 catch(e){
 console.log(e)
@@ -45,7 +45,7 @@ cmd({
     use : ".wabeta",
     filename: __filename
 },
-async(QueenNilu, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(Void, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 
  const latest = await wabetainfo.latest();
@@ -57,7 +57,7 @@ const news = `${latest.fulldesc}`
 const cmnt =`${latest.faq.question}`
 const cmnt2 =`${latest.faq.answer}`
 
-await QueenNilu.sendMessage(from,  { image: { url: latest.image }, caption: `*📚 ᴛɪᴛʟᴇ :* ${title}\n\n*📅 ᴅᴀᴛᴇ :* ${date}\n\n*📡 ᴘʟᴀᴛꜰᴏʀᴍ :* ${platform}\n\n*🖇️ ᴜʀʟ :* ${url}\n\n*📑 ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ :* ${news}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
+await Void.sendMessage(from,  { image: { url: latest.image }, caption: `*📚 ᴛɪᴛʟᴇ :* ${title}\n\n*📅 ᴅᴀᴛᴇ :* ${date}\n\n*📡 ᴘʟᴀᴛꜰᴏʀᴍ :* ${platform}\n\n*🖇️ ᴜʀʟ :* ${url}\n\n*📑 ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ :* ${news}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
 }
 catch(e){
 console.log(e)
@@ -71,7 +71,7 @@ cmd({
     use : ".wabetaall",
     filename: __filename
 },
-async(QueenNilu, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(Void, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 
 const posts = await wabetainfo.articlelist()
@@ -82,7 +82,7 @@ for (let i of posts) {
     
 }
 teks += `*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`
-QueenNilu.sendMessage(from, { image: { url: 'https://telegra.ph/file/e848545de0e98c132a269.jpg' },  caption: teks }, { quoted: mek })
+Void.sendMessage(from, { image: { url: 'https://telegra.ph/file/e848545de0e98c132a269.jpg' },  caption: teks }, { quoted: mek })
 
 }
 catch(e){
@@ -97,7 +97,7 @@ cmd({
     use : ".nasa",
     filename: __filename
 },
-async(QueenNilu, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(Void, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 
 const nasa = await fetchJson(`https://api.nasa.gov/planetary/apod?api_key=5B6oJsSCQyekXZvNOKpsUhRPl1e7FHqjIAyHpybk`);
@@ -107,7 +107,7 @@ const title = `${nasa.title}`
 const date = `${nasa.date}`
 const explanation = `${nasa.explanation}`
 
-await QueenNilu.sendMessage(from,  { image: { url: image }, caption: `*ᴛɪᴛʟᴇ :* ${title}\n\n*ᴅᴀᴛᴇ :* ${date}\n\n*ᴇxᴘʟᴀɴᴀᴛɪᴏɴ :* ${explanation}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
+await Void.sendMessage(from,  { image: { url: image }, caption: `*ᴛɪᴛʟᴇ :* ${title}\n\n*ᴅᴀᴛᴇ :* ${date}\n\n*ᴇxᴘʟᴀɴᴀᴛɪᴏɴ :* ${explanation}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
 }
 catch(e){
 console.log(e)
@@ -121,11 +121,11 @@ cmd({
     use : ".hirunews",
     filename: __filename
 },
-async(QueenNilu, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(Void, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 
 const latest_hiru_data = await hiru.latestHiru();
-await QueenNilu.sendMessage(from,  { image: { url: latest_hiru_data.img }, caption: `*${latest_hiru_data.title}*\n\n${latest_hiru_data.desc}\n\n${latest_hiru_data.link}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
+await Void.sendMessage(from,  { image: { url: latest_hiru_data.img }, caption: `*${latest_hiru_data.title}*\n\n${latest_hiru_data.desc}\n\n${latest_hiru_data.link}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
 }
 catch(e){
 console.log(e)
@@ -139,11 +139,11 @@ cmd({
     use : ".hirunews",
     filename: __filename
 },
-async(QueenNilu, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(Void, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 
 const latest_derana_data = await derana.latestDerana();
-await QueenNilu.sendMessage(from,  { image: { url: latest_derana_data.img }, caption: `*${latest_derana_data.title}*\n\n${latest_hiru_derana.desc}\n\n${latest_hiru_derana.link}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
+await Void.sendMessage(from,  { image: { url: latest_derana_data.img }, caption: `*${latest_derana_data.title}*\n\n${latest_hiru_derana.desc}\n\n${latest_hiru_derana.link}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
 }
 catch(e){
 console.log(e)
@@ -157,13 +157,13 @@ cmd({
     use : ".esana",
     filename: __filename
 },
-async(QueenNilu, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(Void, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
     var api = new Esana()
    const news1 = await api.latest_id()
    const news2  = news1.results.news_id
    const news3 = await api.news(news2)
-   await QueenNilu.sendMessage(from,  { image: { url: news3.results.COVER }, caption: `*${ news3.results.TITLE}*\n\n${ news3.results.PUBLISHED}\n\n${ news3.results.DESCRIPTION}\n\n${ news3.results.URL}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
+   await Void.sendMessage(from,  { image: { url: news3.results.COVER }, caption: `*${ news3.results.TITLE}*\n\n${ news3.results.PUBLISHED}\n\n${ news3.results.DESCRIPTION}\n\n${ news3.results.URL}\n\n*ǫᴜᴇᴇɴ ɴɪʟᴜ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ*`}, { quoted: mek })
 
 }
 catch(e){
