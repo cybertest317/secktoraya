@@ -48,7 +48,7 @@ if (mime =="imageMessage" || mime =="stickerMessage")
     }
 )
 //---------------------------------------------------------------------------
-cmd({
+Secktor.cmd({
     pattern: "hirunews",
     alias: ["hiru","news"],
     react: "🧾",
