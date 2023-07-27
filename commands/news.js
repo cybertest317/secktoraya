@@ -1,6 +1,5 @@
 const { tlang, ringtone, cmd,fetchJson, sleep, botpic,ffmpeg, getBuffer, pinterest, prefix, Config } = require('../lib')
-const { cmd, commands } = require('../lib/command')
-const { fetchJson } = require('../lib/functions')
+const { news } = require("../lib/news.js");
 const hiru = require("../lib/news")
 const Language = require('../lib/language')
 const Lang = Language.getString('nilubot')
