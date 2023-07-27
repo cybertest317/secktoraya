@@ -6,7 +6,6 @@ let { fancytext, tlang, tiny, runtime, formatp, botpic, prefix, sck1 } = require
 const long = String.fromCharCode(8206)
 const readmore = long.repeat(4001)
 const Secktor = require('../lib/commands')
-const Secktor = require('../lib/news')
 
     //---------------------------------------------------------------------------
 Secktor.cmd({
