@@ -1,4 +1,3 @@
-/**
  Copyright (C) 2022.
  Licensed under the  GPL-3.0 License;
  You may not use this file except in compliance with the License.
@@ -8,7 +7,6 @@
  * @description : Secktor,A Multi-functional whatsapp bot.
  * @version 0.0.6
  **/
-
 const os = require('os')
 const moment = require("moment-timezone")
 const fs = require("fs")
@@ -17,7 +15,6 @@ let { fancytext, tlang, tiny, runtime, formatp, botpic, prefix, sck1 } = require
 const long = String.fromCharCode(8206)
 const readmore = long.repeat(4001)
 const Secktor = require('../lib/commands')
-
     //---------------------------------------------------------------------------
 Secktor.cmd({
             pattern: "help",
@@ -66,29 +63,32 @@ Secktor.cmd({
 │ │ Mem:- ${formatp(os.totalmem() - os.freemem())}/${formatp(os.totalmem())}
 │ │ Time:- ${time}
 │ │ Date:- ${date}
-│ ╰──────────────❧
-╰───────────────❧\n
+│ ╰──────────────🎭
+╰───────────────🎭\n
 ` + '```'
                 for (const category in cmds) 
                 {
                    str += `╭────《🎭*${tiny(category)}*🎭》\n` ;
                    if(text.toLowerCase() == category.toLowerCase()){ str = `╭─────🎭 *${tiny(category)}* ❏\n` ;      
                         for (const plugins of cmds[category]) { str += `│🎭│ ${fancytext(plugins,1)}\n` ; }
-                        str += `╰━━━━━━━━━━━━━──❧\n`  ;
+                        str += `╰━━━━━━━━━━━━━──⊷\n`  ;
                         break ;
                    }
                    else { for (const plugins of cmds[category]) { str += `│🎭│ ${fancytext(plugins,1)}\n` ; }
-                         str += `╰━━━━━━━━━━━━━━──❧\n`  ; 
+                         str += `╰━━━━━━━━━━━━━━──⊷\n`  ; 
                    }
-  
-                }
 
+                }
+                str+= `*⭐️Type:* _${prefix}help cmd_ name to know more about specific command.\n*Eg:* _${prefix}help attp_\n*Made with ❤️ in Nodejs* `
+                let buttonMessaged = {
+                    image: { url: await botpic() },
+                    caption: str
+                };
                 return await Void.sendMessage(citel.chat, buttonMessaged);
             }
         }
     )
     //---------------------------------------------------------------------------
-
     //---------------------------------------------------------------------------
 Secktor.cmd({
         pattern: "owner",
@@ -123,10 +123,8 @@ Secktor.cmd({
         return await Void.sendMessage(citel.chat, buttonMessaged, {
             quoted: citel,
         });
-
     }
 )
-
 Secktor.cmd({
     pattern: "file",
     desc: "to get extact name where that command is in repo.\nSo user can edit that.",
@@ -143,6 +141,4 @@ async(Void, citel, text) => {
         if (cmd.category) arr.push(`*🧩Type:* ${cmd.category}`);
         if(cmd.filename) arr.push(`✨FileName: ${cmd.filename}`)
         return citel.reply(arr.join('\n'));
-
-
 })
