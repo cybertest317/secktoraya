@@ -48,7 +48,34 @@ if (mime =="imageMessage" || mime =="stickerMessage")
     }
 )
 //---------------------------------------------------------------------------
+cmd({
+    pattern: "hirunews",
+    alias: ["hiru","news"],
+    react: "🧾",
+    desc: "",
+    category: "download",
+    use: '.hirunews',
+    filename: __filename
+},
+async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
 
+const hirunews = await fetchJson(`https://hirunews.aquaapk-dl.repl.co/api/latest`);
+
+
+          await conn.sendMessage(from , { text:`Hello ${mek.pushname ||  '\n'} I Am Finding sri lanka  News Update Details..` }, { quoted: mek } )    
+
+          const images = `${hirunews.image}`
+           const title = `${hirunews.title}`
+           const date = `${hirunews.time}`
+           const news = `${hirunews.desc}`
+
+await conn.sendMessage(from,  { image: { url: images }, caption: `\n✪ 𝚃𝙸𝚃𝙻𝙴\n\n ${ title }\n\n ✪ 𝐍𝐄𝐖𝐒\n\n${ news }\n\n⚪ 𝐃𝐀𝐓𝐄\n\n${date}`}, { quoted: mek })
+}
+catch(e){
+console.log(e)
+}})
+//---------------------------------------------------------------------------
 cmd({
          pattern: "vv",
          alias : ['viewonce','retrive'],
