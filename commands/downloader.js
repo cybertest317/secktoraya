@@ -93,65 +93,47 @@ cmd({
 )
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "video",
-            desc: "Downloads video from yt.",
-            category: "downloader",
-            filename: __filename,
-            use: '<faded-Alan Walker>',
-        },
-        async(Void, citel, text) => {
-            let yts = require("secktor-pack");
-            let search = await yts(text);
-            let anu = search.videos[0];
-            let urlYt = anu.url
-            const getRandom = (ext) => {
-                return `${Math.floor(Math.random() * 10000)}${ext}`;
-            };
-                let infoYt = await ytdl.getInfo(urlYt);
-                if (infoYt.videoDetails.lengthSeconds >= videotime) return citel.reply(`❌ Video file too big!`);
-                let titleYt = infoYt.videoDetails.title;
-                let randomName = getRandom(".mp4");
-                citel.reply(`📂 ━━━━━━━━━ *𝗗𝗢𝗖𝗨𝗠𝗘𝗡𝗧_𝗜𝗡𝗙𝗢* ━━━━━━━━━ 🎵\n\n\n\nℹ️ *Title:* ${anu.title}\n\n🕑 *Duration:* ${anu.timestamp}\n\n👀 *Viewers:* ${anu.views}\n\n⬆️ *Uploaded:* ${anu.ago}\n\n🎗️ *Author:* ${anu.author.name}\n\n🗃️ *File_Size:* ${fileSizeInMegabytes} MB`);
-                const stream = ytdl(urlYt, {
-                        filter: (info) => info.itag == 22 || info.itag == 18,
-                    })
-                    .pipe(fs.createWriteStream(`./${randomName}`));
-                await new Promise((resolve, reject) => {
-                    stream.on("error", reject);
-                    stream.on("finish", resolve);
-                });
-                let stats = fs.statSync(`./${randomName}`);
-                let fileSizeInBytes = stats.size;
-                let fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
-                if (fileSizeInMegabytes <= dlsize) {
-                    let buttonMessage = {
-                        video: fs.readFileSync(`./${randomName}`),
-                        jpegThumbnail: log0,
-                        mimetype: 'video/mp4',
-                        fileName: `${titleYt}.mp4`,
-                        caption: ` ⿻ Title : ${titleYt}\n ⿻ File Size : ${fileSizeInMegabytes} MB`,
-                        headerType: 4,
-                        contextInfo: {
-                            externalAdReply: {
-                                title: titleYt,
-                                body: citel.pushName,
-                                thumbnail: await getBuffer(search.all[0].thumbnail),
-                                renderLargerThumbnail: true,
-                                mediaType: 2,
-                                mediaUrl: search.all[0].thumbnail,
-                                sourceUrl: search.all[0].thumbnail
-                            }
-                        }
-                    }
-                 Void.sendMessage(citel.chat, buttonMessage, { quoted: citel })
-                 return fs.unlinkSync(`./${randomName}`);
-                } else {
-                    citel.reply(`❌ File size bigger than 100mb.`);
-                }
-                return fs.unlinkSync(`./${randomName}`);      
 
+            pattern: "video",
+
+            desc: "video dl",
+
+            react: "📽️",
+
+            category: "downloader"
+
+        },
+
+        async(Void, citel, text) => {    
+        let yts = require("secktor-pack");
+
+            let search = await yts(text);
+
+            let anu = search.videos[0];
+            if (!text) return     
+            
+const tvideo = await fetchJson(`https://darkalphaxteam-api.cyclic.app/api/download/ytmp4?url=${anu.url}&apikey=prabath`)
+
+const videolink = tvideo.download
+
+            citel.reply (`┏━━━━━✦❘༻༺❘✦━━━━━━┓\n                  *★𝘝𝘐𝘋𝘌𝘖 𝘐𝘕𝘍𝘖★*\n\n➤ *T͙i͙t͙l͙e͙:* ${anu.title}\n\n➤ *D͙u͙r͙a͙t͙i͙o͙n͙:* ${anu.timestamp}\n\n➤ *V͙i͙e͙w͙e͙r͙s͙:* ${anu.views}\n\n➤ *U͙r͙l͙:* ${anu.url}\n\n⤴ *U͙p͙l͙o͙a͙d͙e͙d͙:* ${anu.ago}\n\n➤ *A͙u͙t͙h͙o͙r͙:* ${anu.author.name}\n┗━━━━━✦❘༻༺❘✦━━━━━━┛\n\n_Genarted By Dark SamuZa_`);
+            return Void.sendMessage(citel.chat, {
+                video: {
+                    url: videolink ,
+
+                },
+
+                mimetype: "document/mp4",
+                caption: tlang().footer,
+
+            }, {
+
+                quoted: citel,
+
+            });
 
         }
+
     )
     //---------------------------------------------------------------------------
 cmd({
